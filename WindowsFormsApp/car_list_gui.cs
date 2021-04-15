@@ -16,7 +16,7 @@ namespace WindowsFormsApp
 			update_command_availablility();
 		}
 
-		private void student_list_activated(object sender, EventArgs e)
+		private void car_list_activated(object sender, EventArgs e)
 		{
 			ToolStripManager.Merge(toolStrip1, ((MDI)MdiParent).toolStrip1);
 			ToolStripManager.Merge(statusStrip1, ((MDI)MdiParent).statusStrip1);
@@ -25,7 +25,7 @@ namespace WindowsFormsApp
 			this.statusStrip1.Visible = false;
 		}
 
-		private void student_list_deactivated(object sender, EventArgs e)
+		private void car_list_deactivated(object sender, EventArgs e)
 		{
 			ToolStripManager.RevertMerge(((MDI)MdiParent).toolStrip1, toolStrip1);
 			ToolStripManager.RevertMerge(((MDI)MdiParent).statusStrip1, statusStrip1);
@@ -81,17 +81,13 @@ namespace WindowsFormsApp
 			update_count();
 		}
 
-		private void cars_edit_car_event(car selected_car, car new_car)
+		private void cars_edit_car_event(car selected_car)
 		{
 			foreach(ListViewItem item in listView1.Items)
             {
 				if (ReferenceEquals(item.Tag, selected_car))
 				{
-					ListViewItem new_item = new ListViewItem();
-					new_item.Tag = new_car;
-					update_item(new_item);
-					int i = listView1.Items.IndexOf(item);
-					listView1.Items[i] = new_item;
+					update_item(item);
 				}
 			}
 		}
@@ -132,11 +128,11 @@ namespace WindowsFormsApp
 			if (listView1.SelectedItems.Count != 1)
 				return;
 			car selected_car = (car)listView1.SelectedItems[0].Tag;
-			car_editor_gui car_form = new car_editor_gui(null, cars.cars);
+			car_editor_gui car_form = new car_editor_gui(selected_car, cars.cars);
 			if (car_form.ShowDialog() == DialogResult.OK)
 			{
-				car new_car = new car(car_form.brand, car_form.max_speed, car_form.date_of_production, car_form.type);
-				cars.update_car(selected_car, new_car);
+				selected_car.edit(car_form.brand, car_form.max_speed, car_form.date_of_production, car_form.type);
+				cars.update_car(selected_car);
 			}
 		}
 
@@ -155,11 +151,11 @@ namespace WindowsFormsApp
 			if (listView1.SelectedItems.Count != 1)
 				return;
 			car selected_car = (car)listView1.SelectedItems[0].Tag;
-			car_editor_gui car_form = new car_editor_gui(null, cars.cars);
+			car_editor_gui car_form = new car_editor_gui(selected_car, cars.cars);
 			if (car_form.ShowDialog() == DialogResult.OK)
 			{
-				car new_car = new car(car_form.brand, car_form.max_speed, car_form.date_of_production, car_form.type);
-				cars.update_car(selected_car, new_car);
+				selected_car.edit(car_form.brand, car_form.max_speed, car_form.date_of_production, car_form.type);
+				cars.update_car(selected_car);
 			}
 		}
 

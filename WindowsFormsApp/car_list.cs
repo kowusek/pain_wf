@@ -11,7 +11,7 @@ namespace WindowsFormsApp
         public List<car> cars = new List<car>();
 
         public event Action<car> add_car_event, delete_car_event;
-        public event Action<car, car> update_car_event;
+        public event Action<car> update_car_event;
 
         public void add_car(car car1)
         {
@@ -19,11 +19,9 @@ namespace WindowsFormsApp
             add_car_event?.Invoke(car1);
         }
 
-        public void update_car(car car1, car car2)
+        public void update_car(car car1)
         {
-            int i = cars.IndexOf(car1);
-            cars[i] = car2;
-            update_car_event?.Invoke(car1, car2);
+            update_car_event?.Invoke(car1);
         }
 
         public void delete_car(car car1)

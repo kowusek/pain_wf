@@ -28,11 +28,11 @@ namespace WindowsFormsApp
         }
 
         private car_type type;
-        private List<String> images = new List<String>(new string[]
+        private List<System.Drawing.Bitmap> images = new List<System.Drawing.Bitmap>(new System.Drawing.Bitmap[] 
         {
-            "../../sports_car.png",
-            "../../passenger_car.png",
-            "../../truck.png"
+            global::WindowsFormsApp.Properties.Resources.sports_car,
+            global::WindowsFormsApp.Properties.Resources.passenger_car,
+            global::WindowsFormsApp.Properties.Resources.truck
         });
 
         public custom_control()
@@ -52,7 +52,7 @@ namespace WindowsFormsApp
                 index++;
                 type = (car_type)index;
             }
-            Image image = Image.FromFile(images[index]);
+            Image image = images[index];
             pictureBox1.Image = image;
             pictureBox1.Invalidate();
             Clicked(this, e);
@@ -61,7 +61,7 @@ namespace WindowsFormsApp
         private void GenreControl_Load(object sender, EventArgs e)
         {
             type = (car_type)0;
-            Image image = Image.FromFile(images[0]);
+            Image image = images[0];
             pictureBox1.Image = image;           
         }
     }

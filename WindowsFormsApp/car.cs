@@ -39,5 +39,13 @@ namespace WindowsFormsApp
             this.date_of_producion = date_of_producion;
             this.type = type;
         }
+
+        public void edit(string brand, int max_speed, DateTime date_of_producion, string type)
+        {
+            this.brand = brand;
+            this.max_speed = max_speed;
+            this.date_of_producion = date_of_producion;
+            this.type = type;
+        }
     }
 }

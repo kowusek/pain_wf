@@ -225,8 +225,8 @@ namespace WindowsFormsApp
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "car_list_gui";
             this.Text = "Car List";
-            this.Activated += new System.EventHandler(this.student_list_activated);
-            this.Deactivate += new System.EventHandler(this.student_list_deactivated);
+            this.Activated += new System.EventHandler(this.car_list_activated);
+            this.Deactivate += new System.EventHandler(this.car_list_deactivated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.car_list_FormClosing);
             this.Load += new System.EventHandler(this.car_list_gui_Load);
             this.menuStrip1.ResumeLayout(false);

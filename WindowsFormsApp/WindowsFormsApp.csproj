@@ -57,12 +57,6 @@
     <Compile Include="car_list_gui.Designer.cs">
       <DependentUpon>car_list_gui.cs</DependentUpon>
     </Compile>
-    <Compile Include="car_editor_gui.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="car_editor_gui.Designer.cs">
-      <DependentUpon>car_editor_gui.cs</DependentUpon>
-    </Compile>
     <Compile Include="car.cs" />
     <Compile Include="custom_control.cs">
       <SubType>UserControl</SubType>
@@ -78,9 +72,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="car_editor_gui.resx">
-      <DependentUpon>car_editor_gui.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="custom_control.resx">
       <DependentUpon>custom_control.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +86,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="car_list_gui.resx">
       <DependentUpon>car_list_gui.cs</DependentUpon>
