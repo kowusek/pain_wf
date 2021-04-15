@@ -27,8 +27,8 @@ namespace WindowsFormsApp
             truck
         }
 
-        private car_type type;
-        private List<System.Drawing.Bitmap> images = new List<System.Drawing.Bitmap>(new System.Drawing.Bitmap[] 
+        public car_type type;
+        public List<System.Drawing.Bitmap> images = new List<System.Drawing.Bitmap>(new System.Drawing.Bitmap[] 
         {
             global::WindowsFormsApp.Properties.Resources.sports_car,
             global::WindowsFormsApp.Properties.Resources.passenger_car,

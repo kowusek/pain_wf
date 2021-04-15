@@ -62,6 +62,7 @@ namespace WindowsFormsApp
                 textBox2.Text = car.max_speed.ToString();
                 dateTimePicker1.Value = car.date_of_producion;
                 textBox4.Text = car.type.ToString();
+                genreControl1.pictureBox1.Image = genreControl1.images[car.return_image_index()];
             }
             else
             {

@@ -50,6 +50,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="car_editor_gui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="car_editor_gui.Designer.cs">
+      <DependentUpon>car_editor_gui.cs</DependentUpon>
+    </Compile>
     <Compile Include="car_list.cs" />
     <Compile Include="car_list_gui.cs">
       <SubType>Form</SubType>
@@ -58,6 +64,12 @@
       <DependentUpon>car_list_gui.cs</DependentUpon>
     </Compile>
     <Compile Include="car.cs" />
+    <Compile Include="control.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="control1.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="custom_control.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +84,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="car_editor_gui.resx">
+      <DependentUpon>car_editor_gui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="control.resx">
+      <DependentUpon>control.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="custom_control.resx">
       <DependentUpon>custom_control.cs</DependentUpon>
     </EmbeddedResource>

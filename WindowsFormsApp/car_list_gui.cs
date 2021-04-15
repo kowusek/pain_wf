@@ -73,12 +73,15 @@ namespace WindowsFormsApp
 
 		private void cars_add_car_event(car new_car)
 		{
-			ListViewItem item = new ListViewItem();
-			item.Tag = new_car;
-			update_item(item);
-			listView1.Items.Add(item);
-			this.car_count += 1;
-			update_count();
+			if (not_filter(new_car))
+			{
+				ListViewItem item = new ListViewItem();
+				item.Tag = new_car;
+				update_item(item);
+				listView1.Items.Add(item);
+				this.car_count += 1;
+				update_count();
+			}
 		}
 
 		private void cars_edit_car_event(car selected_car)
@@ -87,9 +90,19 @@ namespace WindowsFormsApp
             {
 				if (ReferenceEquals(item.Tag, selected_car))
 				{
-					update_item(item);
+					if (not_filter(selected_car))
+					{
+						update_item(item);
+						return;
+					}
+					else
+					{
+						listView1.Items.Remove(item);
+						return;
+					}
 				}
 			}
+			cars_add_car_event(selected_car);
 		}
 
 		private void cars_delete_car_event(car selected_car)
@@ -175,49 +188,39 @@ namespace WindowsFormsApp
 			cars.delete_car(selected_car);
 		}
 
-        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		private bool not_filter(car car)
         {
 			if (toolStripComboBox1.Text == "All")
-			{
-				listView1.Items.Clear();
-				car_count = 0;
-				update_items();
-				update_count();
-			}
+            {
+				return true;
+            }
 			else if (toolStripComboBox1.Text == "Max Speed >= 100km/h")
+            {
+				return car.max_speed >= 100;
+            }
+			else if (toolStripComboBox1.Text == "Max Speed < 100km/h") 
 			{
-				listView1.Items.Clear();
-				car_count = 0;
-				foreach (car new_car in cars.cars)
-				{
-					if(new_car.max_speed >= 100) 
-					{
-						ListViewItem item = new ListViewItem();
-						item.Tag = new_car;
-						update_item(item);
-						listView1.Items.Add(item);
-						this.car_count += 1;
-					}
-				}
-				update_count();
+				return car.max_speed < 100;
 			}
-			else if (toolStripComboBox1.Text == "Max Speed < 100km/h")
+			return true;
+		}
+
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			listView1.Items.Clear();
+			car_count = 0;
+			foreach (car new_car in cars.cars)
 			{
-				listView1.Items.Clear();
-				car_count = 0;
-				foreach (car new_car in cars.cars)
+				if(not_filter(new_car)) 
 				{
-					if (new_car.max_speed < 100)
-					{
-						ListViewItem item = new ListViewItem();
-						item.Tag = new_car;
-						update_item(item);
-						listView1.Items.Add(item);
-						this.car_count += 1;
-					}
+					ListViewItem item = new ListViewItem();
+					item.Tag = new_car;
+					update_item(item);
+					listView1.Items.Add(item);
+					this.car_count += 1;
 				}
-				update_count();
 			}
+			update_count();
 		}
 
 		private void update_command_availablility()

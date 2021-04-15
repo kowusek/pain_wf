@@ -32,6 +32,17 @@ namespace WindowsFormsApp
             set;
         }
 
+        public int return_image_index()
+        {
+            if (type == "truck")
+                return 2;
+            if (type == "sports_car")
+                return 0;
+            if (type == "passenger_car")
+                return 1;
+            return 0;
+        }
+
         public car(string brand, int max_speed, DateTime date_of_producion, string type)
         {
             this.brand = brand;
