@@ -67,15 +67,6 @@
     <Compile Include="control.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="control1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="custom_control.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="custom_control.Designer.cs">
-      <DependentUpon>custom_control.cs</DependentUpon>
-    </Compile>
     <Compile Include="MDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,9 +80,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="control.resx">
       <DependentUpon>control.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="custom_control.resx">
-      <DependentUpon>custom_control.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.cs</DependentUpon>

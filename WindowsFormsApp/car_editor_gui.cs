@@ -62,14 +62,15 @@ namespace WindowsFormsApp
                 textBox2.Text = car.max_speed.ToString();
                 dateTimePicker1.Value = car.date_of_producion;
                 textBox4.Text = car.type.ToString();
-                genreControl1.pictureBox1.Image = genreControl1.images[car.return_image_index()];
+                control1.Image = control1.images[control1.string_to_index[car.type.ToString()]];
+                control1.car_type = control1.string_to_index[car.type.ToString()];
             }
             else
             {
                 textBox1.Text = "Ford";
                 textBox2.Text = "200";
                 dateTimePicker1.Value = new DateTime(1980, 1, 1);
-                textBox4.Text = genreControl1.Genre.ToString();
+                textBox4.Text = "sports_car";
             }
         }
 
@@ -107,10 +108,9 @@ namespace WindowsFormsApp
             errorProvider1.SetError(textBox2, "");
         }
 
-        private void genreControl1_Click(object sender, EventArgs e)
+        private void control1_Click(object sender, EventArgs e)
         {
-            string enum_number = genreControl1.Genre.ToString();
-            textBox4.Text = enum_number;
+            textBox4.Text = control1.index_to_string[control1.car_type];
         }
     }
 }
